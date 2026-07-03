@@ -425,11 +425,11 @@
     const FUNCTIES = [
       { code: "B", label: "Bevelvoerder", slots: 1, color: "#C9A24B" },
       { code: "M", label: "Manschap", slots: 2, color: "#5B8C8C" },
-      { code: "CTS", label: "Chauffeur 4133", slots: 1, color: "#B5483D" },
-      { code: "CL", label: "Chauffeur 4152", slots: 1, color: "#3D6B9C" },
-      { code: "OL", label: "Opstapper 4152", slots: 1, color: "#7A6B9C" },
+      { code: "CTS", label: "Chauffeur TS", slots: 1, color: "#3D6B9C" },
+      { code: "CHV", label: "Chauffeur HV", slots: 1, color: "#B5483D" },
+      { code: "OHV", label: "Opstapper HV", slots: 1, color: "#7A6B9C" },
     ];
-    const FUNCTIE_ORDER = ["B", "M", "CTS", "CL", "OL"];
+    const FUNCTIE_ORDER = ["B", "M", "CTS", "CHV", "OHV"];
     const MAX_NAMEN = 10;
     const LOGO_URL = "/c953c7ff-b499-4aad-a62a-b332b3bed244.jpeg";
 
@@ -443,9 +443,11 @@
     }
 
     const SCHOONMAAK_PER_WEEKDAG = {
-      4: "Vloer schoonmaken",
-      5: "Keuken schoonmaken",
-      6: "Bovenverdieping schoonmaken",
+      1: "Ploegoverleg - tijd in overleg\n• Plantjes water geven\n• Slaapkamers schoonmaken\n• Matrashoezen wassen",
+      2: "Sportruimte schoonmaken\n• Papierbak wordt geleegd\n• Interieur voertuigen schoonmaken",
+      3: "Controle voertuigen aan de hand van de controlelijsten\n• Voorraadkar controleren aan de hand van de lijst op de kar\n• Voorraadkasten controleren en aanvullen",
+      4: "Uitrukhal schoonmaken\n• Plantjes water geven\n• Voertuigen wassen",
+      6: "Planten water geven",
     };
 
     function schoonmaakTaakVoor(iso) {
@@ -658,8 +660,8 @@
               <div className="font-medium text-[#E8E6E1] text-sm capitalize">{formatDateNL(dienst.datum)}</div>
               {weerPerDatum && <WeerBadge datum={dienst.datum} weerPerDatum={weerPerDatum} />}
               {taak && (
-                <div className="text-[11px] text-[#8AA0B5] mt-0.5 flex items-center gap-1">
-                  <span>🧹</span> {taak}
+                <div className="text-[11px] text-[#8AA0B5] mt-0.5 whitespace-pre-line">
+                  <span>📋</span> {taak}
                 </div>
               )}
             </div>
@@ -831,8 +833,8 @@
               <div className="text-[#E8E6E1] font-bold text-base capitalize">{formatDateNL(dienst.datum)}</div>
               {weerPerDatum && <WeerBadge datum={dienst.datum} weerPerDatum={weerPerDatum} />}
               {taak && (
-                <div className="text-[12px] text-[#8AA0B5] mt-1 flex items-center gap-1">
-                  <span>🧹</span> {taak}
+                <div className="text-[12px] text-[#8AA0B5] mt-1 whitespace-pre-line">
+                  <span>📋</span> {taak}
                 </div>
               )}
             </div>
@@ -1434,9 +1436,9 @@
           const kleuren = {
             'B': '#C9A24B',
             'M': '#5B8C8C',
-            'CTS': '#B5483D',
-            'CL': '#3D6B9C',
-            'OL': '#7A6B9C'
+            'CTS': '#3D6B9C',
+            'CHV': '#B5483D',
+            'OHV': '#7A6B9C'
           };
 
           // Bouw de PDF inhoud direct in een tijdelijk element
@@ -1482,9 +1484,9 @@
               <strong>Legenda:</strong> 
               <span style="color:#C9A24B;font-weight:bold;">B</span> = Bevelvoerder · 
               <span style="color:#5B8C8C;font-weight:bold;">M</span> = Manschap · 
-              <span style="color:#B5483D;font-weight:bold;">CTS</span> = Chauffeur 4133 · 
-              <span style="color:#3D6B9C;font-weight:bold;">CL</span> = Chauffeur 4152 · 
-              <span style="color:#7A6B9C;font-weight:bold;">OL</span> = Opstapper 4152
+              <span style="color:#3D6B9C;font-weight:bold;">CTS</span> = Chauffeur TS · 
+              <span style="color:#B5483D;font-weight:bold;">CHV</span> = Chauffeur HV · 
+              <span style="color:#7A6B9C;font-weight:bold;">OHV</span> = Opstapper HV
               <span style="margin-left:10px;color:#999;">· = geen dienst</span>
             </div>
             <div style="margin-top:4px;font-size:8px;color:#999;text-align:right;">
@@ -1554,7 +1556,7 @@
           tekst += rij + '\n';
         });
         tekst += '\n' + '-'.repeat(70) + '\n';
-        tekst += 'Legenda: B=Bevelvoerder · M=Manschap · CTS=Chauffeur4133 · CL=Chauffeur4152 · OL=Opstapper4152\n';
+        tekst += 'Legenda: B=Bevelvoerder · M=Manschap · CTS=Chauffeur TS · CHV=Chauffeur HV · OHV=Opstapper HV\n';
         tekst += `Gegenereerd op ${new Date().toLocaleString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}`;
 
         const mailTekst =
