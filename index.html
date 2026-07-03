@@ -443,12 +443,12 @@
     }
 
     const SCHOONMAAK_PER_WEEKDAG = {
-      1: "Ploegoverleg - tijd in overleg\n• Plantjes water geven\n• Slaapkamers schoonmaken\n• Matrashoezen wassen",
-      2: "Sportruimte schoonmaken\n• Papierbak wordt geleegd\n• Interieur voertuigen schoonmaken",
-      3: "Controle voertuigen aan de hand van de controlelijsten\n• Voorraadkar controleren aan de hand van de lijst op de kar\n• Voorraadkasten controleren en aanvullen",
-      4: "Uitrukhal schoonmaken\n• Plantjes water geven\n• Voertuigen wassen",
-      5: "Keuken schoonmaken",
-      6: "Plantjes water geven",
+      1: "🗣️ Ploegoverleg - tijd in overleg\n🌱 Plantjes water geven\n🛏️ Slaapkamers schoonmaken\n🧺 Matrashoezen wassen",
+      2: "🏋️ Sportruimte schoonmaken\n🗑️ Papierbak wordt geleegd\n🚐 Interieur voertuigen schoonmaken",
+      3: "✅ Controle voertuigen aan de hand van de controlelijsten\n📋 Voorraadkar controleren aan de hand van de lijst op de kar\n📦 Voorraadkasten controleren en aanvullen",
+      4: "🚒 Uitrukhal schoonmaken\n🌱 Plantjes water geven\n🚿 Voertuigen wassen",
+      5: "🍽️ Keuken schoonmaken",
+      6: "🌱 Plantjes water geven",
     };
 
     function schoonmaakTaakVoor(iso) {
@@ -662,7 +662,7 @@
               {weerPerDatum && <WeerBadge datum={dienst.datum} weerPerDatum={weerPerDatum} />}
               {taak && (
                 <div className="text-[11px] text-[#8AA0B5] mt-0.5 whitespace-pre-line">
-                  <span>📋</span> {taak}
+                  {taak}
                 </div>
               )}
             </div>
@@ -835,7 +835,7 @@
               {weerPerDatum && <WeerBadge datum={dienst.datum} weerPerDatum={weerPerDatum} />}
               {taak && (
                 <div className="text-[12px] text-[#8AA0B5] mt-1 whitespace-pre-line">
-                  <span>📋</span> {taak}
+                  {taak}
                 </div>
               )}
             </div>
